@@ -4,7 +4,13 @@
             xsi:schemaLocation="http://jboss.org/schema/arquillian
     http://jboss.org/schema/arquillian/arquillian_1_0.xsd">
 
-    <container qualifier="gf4_managed" default="true">
+	<container qualifier="wildfly10-managed" default="true">
+        <configuration>
+            <property name="jbossHome">/Users/radu/wildfly-10.1.0.Final</property>
+        </configuration>
+    </container>
+
+    <container qualifier="gf4_managed" >
         <configuration>
             <property name="glassFishHome">C:\Program Files\glassfish4</property>
             <property name="adminHost">localhost</property>

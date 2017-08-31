@@ -1,7 +1,20 @@
 package ch.cern.poc.oauth2.test;
 
-import ch.cern.poc.oauth2.Common;
-import junit.framework.Assert;
+import static org.junit.Assert.assertNotNull;
+
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
 import org.apache.oltu.oauth2.client.OAuthClient;
 import org.apache.oltu.oauth2.client.URLConnectionClient;
 import org.apache.oltu.oauth2.client.request.OAuthClientRequest;
@@ -22,19 +35,8 @@ import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.jboss.shrinkwrap.resolver.api.maven.Maven;
 import org.testng.annotations.Test;
 
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import static org.junit.Assert.assertNotNull;
+import ch.cern.poc.oauth2.Common;
+import junit.framework.Assert;
 
 /**
  * Created by tr0k on 2016-07-28.
@@ -51,6 +53,7 @@ public class AuthTest extends Arquillian{
                 .addPackages(true, "ch.cern.poc.oauth2")
                 .addAsWebInfResource(new FileAsset(new File("src/main/webapp/WEB-INF/beans.xml")), "beans.xml")
                 .addAsWebInfResource(new FileAsset(new File("src/main/webapp/WEB-INF/web.xml")), "web.xml")
+                .addAsWebInfResource(new FileAsset(new File("src/main/webapp/WEB-INF/jboss-web.xml")), "jboss-web.xml")
                 .addAsLibraries(Maven.resolver().loadPomFromFile("pom.xml")
                         .importRuntimeDependencies().resolve().withTransitivity().asFile());
     }
