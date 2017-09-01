@@ -111,25 +111,7 @@
 
 	<build>
 		<plugins>
-			<plugin>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<version>1.7</version>
-				<executions>
-					<execution>
-						<phase>process-test-classes</phase>
-						<configuration>
-							<target>
-								<copy todir="${basedir}/target/classes">
-									<fileset dir="${basedir}/target/test-classes" includes="**/*" />
-								</copy>
-							</target>
-						</configuration>
-						<goals>
-							<goal>run</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+			
 			<plugin>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.15</version>
